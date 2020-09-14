@@ -1,8 +1,13 @@
 body {
-  background-color: linen;
   font-family: monospace;
   font-weight: bold;
-  font-size: 2.5em;
+}
+
+h1 {
+  position: absolute;
+  padding-top: 2em;
+  width: 100%;
+  text-align: center;
 }
 
 #wxh {
@@ -10,4 +15,27 @@ body {
   top: 50%;
   width: 100%;
   text-align: center;
+  font-size: 2.5em;
+}
+
+#wline {
+  position: fixed;
+  bottom: 5%;
+}
+
+#hline {
+  position: fixed;
+  right: 5%;
+}
+
+span {
+  font-size: 2em;
+}
+
+#width {
+  color: rgb(169, 204, 227);
+}
+
+#height {
+  color: rgb(162, 217, 206);
 }
