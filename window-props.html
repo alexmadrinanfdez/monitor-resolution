@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>window resolution</title>
+  <title>screen resolution</title>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -9,39 +9,42 @@
 <body>
   <h1>
     The <a href="https://www.viewsonic.com/library/tech/monitor-resolution-aspect-ratio/">
-      <div class="tooltip">resolution<em class="tooltiptext">visual dimensions of any given display expressed in terms of width and height, monitor resolution is comprised of a specific number of pixels.</em></div></a> of this screen is
+      <div class="tooltip">resolution<em class="tooltiptext">Visual dimensions of any given display expressed in terms of width and height. Monitor resolution is comprised of a specific number of pixels.</em></div></a> of this screen is
 
   </h1>
 
-  <div id="wxh">
+  <div id="wxh" class="tooltip">
     <span id="width"></span> x <span id="height"></span>
+    <span id="resolution" class="tooltiptext"></span>
   </div>
 
   <!-- wline: horizontal line (width) -->
   <svg id="wline" width="100%" height="40">
-    <line x1="0" y1="50%" x2="100%" y2="50%" style="stroke:rgb(169, 204, 227);stroke-width:5" />
-    <line x1="0" y1="50%" x2="2%" y2="100%" style="stroke:rgb(169, 204, 227);stroke-width:5" />
-    <line x1="0" y1="50%" x2="2%" y2="0" style="stroke:rgb(169, 204, 227);stroke-width:5" />
-    <line x1="100%" y1="50%" x2="98%" y2="100%" style="stroke:rgb(169, 204, 227);stroke-width:5" />
-    <line x1="100%" y1="50%" x2="98%" y2="0" style="stroke:rgb(169, 204, 227);stroke-width:5" />
-    <line x1="2%" y1="0" x2="2%" y2="100%" style="stroke:rgb(169, 204, 227);stroke-width:5" />
-    <line x1="98%" y1="0" x2="98%" y2="100%" style="stroke:rgb(169, 204, 227);stroke-width:5" />
+    <line x1="0" y1="50%" x2="100%" y2="50%"/>
+    <line x1="0" y1="50%" x2="2%" y2="100%"/>
+    <line x1="0" y1="50%" x2="2%" y2="0"/>
+    <line x1="100%" y1="50%" x2="98%" y2="100%"/>
+    <line x1="100%" y1="50%" x2="98%" y2="0"/>
+    <line x1="2%" y1="0" x2="2%" y2="100%"/>
+    <line x1="98%" y1="0" x2="98%" y2="100%"/>
   </svg>
 
   <!-- hline: vertical line (height) -->
   <svg id="hline" width="40" height="100%">
-    <line x1="50%" y1="0" x2="50%" y2="100%" style="stroke:rgb(162, 217, 206);stroke-width:5" />
-    <line x1="50%" y1="0" x2="100%" y2="4%" style="stroke:rgb(162, 217, 206);stroke-width:5" />
-    <line x1="50%" y1="0" x2="0" y2="4%" style="stroke:rgb(162, 217, 206);stroke-width:5" />
-    <line x1="50%" y1="100%" x2="100%" y2="96%" style="stroke:rgb(162, 217, 206);stroke-width:5" />
-    <line x1="50%" y1="100%" x2="0%" y2="96%" style="stroke:rgb(162, 217, 206);stroke-width:5" />
-    <line x1="0" y1="4%" x2="100%" y2="4%" style="stroke:rgb(162, 217, 206);stroke-width:5" />
-    <line x1="0" y1="96%" x2="100%" y2="96%" style="stroke:rgb(162, 217, 206);stroke-width:5" />
+    <line x1="50%" y1="0" x2="50%" y2="100%"/>
+    <line x1="50%" y1="0" x2="100%" y2="4%"/>
+    <line x1="50%" y1="0" x2="0" y2="4%"/>
+    <line x1="50%" y1="100%" x2="100%" y2="96%"/>
+    <line x1="50%" y1="100%" x2="0%" y2="96%"/>
+    <line x1="0" y1="4%" x2="100%" y2="4%"/>
+    <line x1="0" y1="96%" x2="100%" y2="96%"/>
   </svg>
 
   <script>
   document.getElementById('width').innerHTML = screen.width;
   document.getElementById('height').innerHTML = screen.height;
+
+  document.getElementById('resolution').innerHTML = screen.width * screen.height + 'px';
   </script>
 </body>
 </html>
