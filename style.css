@@ -56,6 +56,10 @@ svg {
   font-size: 3em;
 }
 
+#diagnostics {
+  position: absolute;
+}
+
 .tooltip {
   position: relative;
   display: inline-block;
