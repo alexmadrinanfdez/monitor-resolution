@@ -20,7 +20,6 @@ function getDiagnostics() {
     devicePixelRatio: window.devicePixelRatio,
     aspectRatio: getAspectRatio(screenWidth, screenHeight),
     orientation: screenWidth >= screenHeight ? "Landscape" : "Portrait",
-    colorDepth: screen.colorDepth,
     totalPixels: screenWidth * screenHeight
   };
 }
@@ -35,7 +34,6 @@ function renderDiagnostics(diagnostics) {
   document.getElementById("device-pixel-ratio").textContent = diagnostics.devicePixelRatio;
   document.getElementById("aspect-ratio").textContent = diagnostics.aspectRatio;
   document.getElementById("orientation").textContent = diagnostics.orientation;
-  document.getElementById("color-depth").textContent = diagnostics.colorDepth;
   document.getElementById("total-pixels").textContent = diagnostics.totalPixels.toLocaleString();
 }
 
