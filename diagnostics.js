@@ -28,7 +28,7 @@ function renderDiagnostics(diagnostics) {
   document.getElementById("width").textContent = diagnostics.screenWidth;
   document.getElementById("height").textContent = diagnostics.screenHeight;
   document.getElementById("resolution").textContent = `${diagnostics.totalPixels}px`;
-  document.getElementById("screen-size").textContent = `${diagnostics.screenWidth}  x ${diagnostics.screenHeight}`;
+  document.getElementById("screen-size").textContent = `${diagnostics.screenWidth} x ${diagnostics.screenHeight}`;
   document.getElementById("available-size").textContent = `${diagnostics.availableWidth} x ${diagnostics.availableHeight}`;
   document.getElementById("viewport-size").textContent = `${diagnostics.viewportWidth} x ${diagnostics.viewportHeight}`;
   document.getElementById("device-pixel-ratio").textContent = diagnostics.devicePixelRatio;
@@ -37,4 +37,26 @@ function renderDiagnostics(diagnostics) {
   document.getElementById("total-pixels").textContent = diagnostics.totalPixels.toLocaleString();
 }
 
-renderDiagnostics(getDiagnostics());
+function refreshDiagnostics() {
+  renderDiagnostics(getDiagnostics());
+}
+
+let refreshFrameId;
+
+function scheduleRefresh() {
+  if (refreshFrameId) {
+    return; // throttle updates - one per animation frame
+  }
+  refreshFrameId = window.requestAnimationFrame(() => {
+    refreshFrameId = null;
+    refreshDiagnostics();
+  });
+}
+
+window.addEventListener("resize", scheduleRefresh);
+window.addEventListener("orientationchange", scheduleRefresh);
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", scheduleRefresh);
+}
+
+refreshDiagnostics();
