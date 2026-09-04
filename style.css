@@ -73,7 +73,7 @@ svg {
   padding: 10px 0;
 
   /* Text inside */
-  font-size: 0.5em;
+  font-size: 0.25em;
   color: black;
   text-align: center;
 
@@ -87,6 +87,10 @@ svg {
 }
 
 .tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip:focus-within .tooltiptext {
   visibility: visible;
 }
 
