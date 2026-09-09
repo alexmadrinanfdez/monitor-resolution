@@ -66,6 +66,20 @@ svg {
   margin: 0.35em 0;
 }
 
+#actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  margin: 1rem auto;
+}
+
+#action-status {
+  flex-basis: 100%;
+  margin: 0;
+  text-align: center;
+}
+
 .tooltip {
   position: relative;
 }

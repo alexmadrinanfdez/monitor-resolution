@@ -37,6 +37,41 @@ function renderDiagnostics(diagnostics) {
   document.getElementById("total-pixels").textContent = diagnostics.totalPixels.toLocaleString();
 }
 
+function formatDiagnostics(diagnostics) {
+  return [
+    `Screen: ${diagnostics.screenWidth} x ${diagnostics.screenHeight} CSS px`,
+    `Available screen: ${diagnostics.availableWidth} x ${diagnostics.availableHeight} CSS px`,
+    `Browser viewport: ${diagnostics.viewportWidth} x ${diagnostics.viewportHeight} CSS px`,
+    `Device pixel ratio: ${diagnostics.devicePixelRatio}`,
+    `Aspect ratio: ${diagnostics.aspectRatio}`,
+    `Orientation: ${diagnostics.orientation}`,
+    `Total screen pixels: ${diagnostics.totalPixels.toLocaleString()}`
+  ].join("\n");
+}
+
+async function copyDiagnostics() {
+  try {
+    await navigator.clipboard.writeText(formatDiagnostics(getDiagnostics()));
+    document.getElementById("action-status").textContent = "Diagnostics copied.";
+  } catch (error) {
+    document.getElementById("action-status").textContent = "Unable to copy diagnostics.";
+  }
+}
+
+async function shareDiagnostics() {
+  try {
+    await navigator.share({
+      title: "Display diagnostics",
+      text: formatDiagnostics(getDiagnostics())
+    });
+    document.getElementById("action-status").textContent = "Diagnostics shared.";
+  } catch (error) {
+    if (error.name !== "AbortError") {
+      document.getElementById("action-status").textContent = "Unable to share diagnostics.";
+    }
+  }
+}
+
 function refreshDiagnostics() {
   renderDiagnostics(getDiagnostics());
 }
@@ -58,5 +93,15 @@ window.addEventListener("orientationchange", scheduleRefresh);
 if (window.visualViewport) {
   window.visualViewport.addEventListener("resize", scheduleRefresh);
 }
+
+const copyButton = document.getElementById("copy-diagnostics");
+const shareButton = document.getElementById("share-diagnostics");
+
+if (navigator.share) {
+  shareButton.hidden = false;
+}
+
+copyButton.addEventListener("click", copyDiagnostics);
+shareButton.addEventListener("click", shareDiagnostics);
 
 refreshDiagnostics();

@@ -36,6 +36,12 @@
     <p>Total screen pixels: <span id="total-pixels"></span></p>
   </section>
 
+  <section id="actions" aria-label="Diagnostic actions">
+    <button id="copy-diagnostics" type="button">Copy diagnostics</button>
+    <button id="share-diagnostics" type="button" hidden>Share diagnostics</button>
+    <p id="action-status" role="status" aria-live="polite"></p>
+  </section>
+
   <!-- wline: horizontal line (width) -->
   <svg id="wline" width="100%" height="40" aria-hidden="true">
     <line x1="0" y1="50%" x2="100%" y2="50%"/>
