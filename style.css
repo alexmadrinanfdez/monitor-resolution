@@ -22,7 +22,7 @@ h1 {
 }
 
 a {
-  color: salmon;
+  color: rgb(250, 128, 114);
   text-decoration: none;
 }
 
@@ -78,6 +78,26 @@ svg {
   flex-basis: 100%;
   margin: 0;
   text-align: center;
+  font-size: 0.9em;
+}
+
+button {
+  background: rgba(140, 47, 57, 0.3);
+  border: 2px solid rgb(70, 18, 32);
+  border-radius: 2px;
+  color: rgb(70, 18, 32);
+  cursor: pointer;
+  font: inherit;
+  padding: .75em 1.5em;
+}
+
+button:hover,
+button:focus-visible {
+  background: rgba(250, 128, 114, 0.3);
+}
+
+button:active {
+  transform: translateY(1px);
 }
 
 .tooltip {
