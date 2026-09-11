@@ -49,27 +49,26 @@ function formatDiagnostics(diagnostics) {
   ].join("\n");
 }
 
-async function copyDiagnostics() {
-  try {
-    await navigator.clipboard.writeText(formatDiagnostics(getDiagnostics()));
-    document.getElementById("action-status").textContent = "Diagnostics copied.";
-  } catch (error) {
-    document.getElementById("action-status").textContent = "Unable to copy diagnostics.";
-  }
-}
+async function handleButtonAction(type) {
+  const status = document.getElementById("action-status");
+  const diagnostics = formatDiagnostics(getDiagnostics());
 
-async function shareDiagnostics() {
   try {
-    await navigator.share({
-      title: "Display diagnostics",
-      text: formatDiagnostics(getDiagnostics())
-    });
-    document.getElementById("action-status").textContent = "Diagnostics shared.";
-  } catch (error) {
-    if (error.name !== "AbortError") {
-      document.getElementById("action-status").textContent = "Unable to share diagnostics.";
+    if (type === "copy") {
+      await navigator.clipboard.writeText(diagnostics);
+    } else if (type === "share") {
+      await navigator.share({
+        title: "Display diagnostics",
+        text: diagnostics
+      });
+    } else {
+      throw new Error();
     }
+  } catch (error) {
+    if (error.name === "AbortError") return;
+    status.textContent = `Unable to ${type} diagnostics.`
   }
+  status.textContent = `Diagnostics ${type === "copy" ? "copied" : "shared"}.`;
 }
 
 function refreshDiagnostics() {
@@ -101,7 +100,7 @@ if (navigator.share) {
   shareButton.hidden = false;
 }
 
-copyButton.addEventListener("click", copyDiagnostics);
-shareButton.addEventListener("click", shareDiagnostics);
+copyButton.addEventListener("click", () => handleButtonAction("copy"));
+shareButton.addEventListener("click", () => handleButtonAction("share"));
 
 refreshDiagnostics();
