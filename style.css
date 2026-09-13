@@ -30,6 +30,31 @@ svg {
   stroke-width: 5px;
 }
 
+table {
+  border-collapse: collapse;
+  font-size: 1.1em;
+  color: rgb(70, 18, 32);
+  border: none;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 0.4em 0.8em;
+  text-align: left;
+  border-bottom: 1px dashed rgba(70, 18, 32, 0.5);
+}
+
+tr:last-child th,
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:nth-child(odd) th {
+  background: rgba(250, 128, 114, 0.15);
+}
+
 #wxh {
   text-align: center;
   font-size: clamp(2.25em, 5vw, 5em);
@@ -57,15 +82,6 @@ svg {
   color: rgb(162, 217, 206);
 }
 
-#diagnostics {
-  margin: 1rem auto;
-  font-size: 1.25em;
-}
-
-#diagnostics p {
-  margin: 0.35em 0;
-}
-
 #actions {
   display: flex;
   flex-wrap: wrap;
@@ -88,7 +104,7 @@ button {
   color: rgb(70, 18, 32);
   cursor: pointer;
   font: inherit;
-  padding: .75em 1.5em;
+  padding: .6em 1.5em;
 }
 
 button:hover,

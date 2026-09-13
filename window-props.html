@@ -26,15 +26,38 @@
     </p>
   </h1>
 
-  <section id="diagnostics" aria-label="Display diagnostics" aria-live="polite">
-    <p>Screen: <span id="screen-size"></span> CSS px</p>
-    <p>Available screen: <span id="available-size"></span> CSS px</p>
-    <p>Browser viewport: <span id="viewport-size"></span> CSS px</p>
-    <p>Device pixel ratio: <span id="device-pixel-ratio"></span></p>
-    <p>Aspect ratio: <span id="aspect-ratio"></span></p>
-    <p>Orientation: <span id="orientation"></span></p>
-    <p>Total screen pixels: <span id="total-pixels"></span></p>
-  </section>
+  <table aria-label="Display diagnostics" aria-live="polite">
+    <tbody>
+      <tr>
+        <th scope="row">Screen</th>
+        <td><span id="screen-size"></span> CSS px</td>
+      </tr>
+      <tr>
+        <th scope="row">Available screen</th>
+        <td><span id="available-size"></span> CSS px</td>
+      </tr>
+      <tr>
+        <th scope="row">Browser viewport</th>
+        <td><span id="viewport-size"></span> CSS px</td>
+      </tr>
+      <tr>
+        <th scope="row">Device pixel ratio</th>
+        <td><span id="device-pixel-ratio"></span></td>
+      </tr>
+      <tr>
+        <th scope="row">Aspect ratio</th>
+        <td><span id="aspect-ratio"></span></td>
+      </tr>
+      <tr>
+        <th scope="row">Orientation</th>
+        <td><span id="orientation"></span></td>
+      </tr>
+      <tr>
+        <th scope="row">Total screen pixels</th>
+        <td><span id="total-pixels"></span></td>
+      </tr>
+    </tbody>
+  </table>
 
   <section id="actions" aria-label="Diagnostic actions">
     <button id="copy-diagnostics" type="button">Copy</button>
