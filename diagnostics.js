@@ -50,21 +50,18 @@ function renderDiagnostics(diagnostics) {
   document.getElementById("total-pixels").title = `= ${formatNumber(diagnostics.totalPixels, compact=true)}`;
 }
 
-function formatDiagnostics(diagnostics) {
-  return [
-    `Screen: ${formatDimensions(diagnostics.screenWidth, diagnostics.screenHeight)}`,
-    `Available screen: ${formatDimensions(diagnostics.availableWidth, diagnostics.availableHeight)}`,
-    `Browser viewport: ${formatDimensions(diagnostics.viewportWidth, diagnostics.viewportHeight)}`,
-    `Device pixel ratio: ${diagnostics.devicePixelRatio}`,
-    `Aspect ratio: ${diagnostics.aspectRatio}`,
-    `Orientation: ${diagnostics.orientation}`,
-    `Total screen pixels: ${formatNumber(diagnostics.totalPixels)} (${formatNumber(diagnostics.totalPixels, compact=true)})`
-  ].join("\n");
+function formatDiagnosticsfromTable() {
+  return Array.from(document.querySelectorAll("table tbody tr"), (row) => {
+    const label = row.querySelector("th").textContent;
+    const value = row.querySelector("td").textContent;
+    
+    return `${label}: ${value}`;
+  }).join("\n");
 }
 
 async function handleButtonAction(type) {
   const status = document.getElementById("action-status");
-  const diagnostics = formatDiagnostics(getDiagnostics());
+  const diagnostics = formatDiagnosticsfromTable();
 
   try {
     if (type === "copy") {
