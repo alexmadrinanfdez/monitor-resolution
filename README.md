@@ -1,4 +1,10 @@
 # monitor-resolution
 
-Shows the size (in pixels) of the screen used to load the page:
-> width[px] **x** height[px].
+A lightweight client-side utility that displays the current monitor resolution and related display diagnostics for the page being loaded.
+
+## Overview
+
+The page shows the screen size in pixels as:
+> width[px] × height[px]
+
+It also reports additional values such as the available screen area, browser viewport, device pixel ratio, aspect ratio, orientation, and total screen pixels.
